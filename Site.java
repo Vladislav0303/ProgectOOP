@@ -17,5 +17,6 @@ public class Site {
 
     public static void main(String[] args) {
         Site s = new Site();
+        s.toString();
     }
 }
