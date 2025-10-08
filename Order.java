@@ -1,13 +1,15 @@
 import java.util.Arrays;
 
 public class Order {
-    int numOfOrder;
+    private int numOfOrder;
+
     public Order() {
 
     }
-    public void order(String[] NameProducts, int[] countOfProduct, int[] cost) {
+    void order(String[] NameProducts, int[] countOfProduct, int[] cost) {
 //        Site site = new Site();
-//        numOfOrder++;
+//          int num = numOfOrder++;
+//          System.out.println(num);
 //        site.database = "Номер замовлення: " + numOfOrder;
 //        System.out.println("Номер замовлення: " + numOfOrder);
 //        System.out.println("Список замовлення: " + Arrays.toString(NameProducts));
