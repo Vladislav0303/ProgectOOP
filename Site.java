@@ -1,9 +1,8 @@
-import java.io.File;
+
 
 public class Site {
     private String database = "data.txt";
     private String[] communications;
-    private String baseDataOfRating = "databaseOfProducts.txt";
 
     public Site() {
         site();
@@ -26,5 +25,13 @@ public class Site {
 
     public void setDatabase(String database) {
         this.database = database;
+    }
+
+    public String[] getCommunications() {
+        return communications;
+    }
+
+    public void setCommunications(String[] communications) {
+        this.communications = communications;
     }
 }
