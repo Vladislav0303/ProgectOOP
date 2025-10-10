@@ -1,5 +1,5 @@
 public class Admin {
-    public String NameAdmin;
+    protected String NameAdmin;
     private String password;
 
     public Admin() {
@@ -8,6 +8,7 @@ public class Admin {
     void admin() {
      Site site = new Site();
         site.setDatabase(NameAdmin + " " + password);
+//        site.setCommunications();
 //     привілеї адміна
         String data = site.getDatabase();
         System.out.println(data);

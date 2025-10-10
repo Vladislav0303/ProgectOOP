@@ -2,7 +2,7 @@
 public class Basket {
     public String[] NameProduct = new String[10];
     public int[] countOfProduct = new int[100];
-    public int[] cost;
+    protected int[] cost;
 
     public Basket() {
 

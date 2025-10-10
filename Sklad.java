@@ -2,7 +2,7 @@
 public class Sklad {
     private String numOfSklad;
     private Boolean isavailability;
-    private int[] countOfProduct;
+    protected int[] countOfProduct;
 
     public Sklad() {
         sklad();

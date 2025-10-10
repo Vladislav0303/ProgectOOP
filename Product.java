@@ -4,8 +4,8 @@ public class Product {
     private String nameProduct;
     private int countOfProduct;
     private int cost;
-    private String characteristic;
-    private int rating;
+    protected String characteristic;
+    protected int rating;
 
     public Product() {
         product();
