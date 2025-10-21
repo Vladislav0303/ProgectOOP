@@ -1,22 +1,21 @@
 
-
 public class Site {
     private String database = "data.txt";
     private String[] communications;
 
     public Site() {
-        site();
+
     }
 
     void site() {
-        // communications - виводимо зв'язки(Твітер, телеграм, Х)
-        // Далі в клас клієнт авторизація/реєстрація(Client)
-        // Або в клас адмін для авторизації як адмін(Admin)
+        System.out.print("Discord " + "Twitch " + "YouTube " + "Telegram " + "X" + "\n");
+        Client cl = new Client();
+        cl.client();
     }
 
     public static void main(String[] args) {
         Site s = new Site();
-        s.toString();
+        s.site();
     }
 
     public String getDatabase() {
