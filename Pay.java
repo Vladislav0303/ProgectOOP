@@ -5,7 +5,7 @@ public class Pay {
     public String typeofbank;
 
     public Pay() {
-        pay();
+
     }
     void pay() {
         // Користувач обирає тип оплати, обирає банк, сплачує ціну, далі обирає тип доставки

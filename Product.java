@@ -1,4 +1,5 @@
-
+import java.io.*;
+import java.util.Scanner;
 
 public class Product {
     private String nameProduct;
@@ -6,36 +7,54 @@ public class Product {
     private int cost;
     protected String characteristic;
     protected int rating;
+    private String databaseProducts = "rtr.txt";
+    Scanner sc = new Scanner(System.in);
 
     public Product() {
-        product();
+
     }
     // якщо користувач захоче поставити оцінку
-        void resp() {
-            Response rsp = new Response();
-            System.out.println(rsp);
-        }
-        // коли користувач обрав що хоче купити
-        void basket() {
-//        Basket bs = new Basket();
-//        bs.basket(nameProduct(ці змінні будуть мати значення), countOfProduct(ці також), cost);
-//        Приклад - bs.basket("Планшет" , 10, 5000);
-        }
-
         void product() {
-        String nameproduct = getNameProduct();
-        int costproduct = getCost();
-        String chatacter = getCharacteristic();
-        int rating = getRating();
-        int countproduct = getCountOfProduct();
+            try (BufferedReader br = new BufferedReader(new FileReader(databaseProducts))){
+                String ln;
+                while ((ln = br.readLine()) != null) {
+                    System.out.println(ln);
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            System.out.println("Хочете додати свій коментар?: ");
+            String chose = sc.nextLine();
+            if(chose.equals("Так")) {
+                Response rsp = new Response();
+            }
+            System.out.println("Ви вже вибрали що хочете купити?: ");
+            String chose1 = sc.nextLine();
+            if(chose1.equals("Так")) {
+                Basket bs = new Basket();
+//        bs.basket(nameProduct(ці змінні будуть мати значення), countOfProduct(ці також), cost);
+            }
 //      вивід продуктів на екран
         }
-    void aboutOfProduct() {
-//        pr.setNameProduct();
-//        pr.setCost();
-//        pr.setCharacteristic();
-//        pr.setRating();
-//        pr.setCountOfProduct();
+    void aboutOfProduct(String nameproduct, int costproduct, String character, int rating, int countproduct) {
+        setNameProduct(nameproduct);
+        setCost(costproduct);
+        setCharacteristic(character);
+        setRating(rating);
+        setCountOfProduct(countproduct);
+        String nameprod = "Назва товару";
+        String costprod = "Ціна за товар";
+        String characterprod = "Характеристика товару";
+        String ratingprod = "Рейтинг товару";
+        String countprod = "Кількість товару у наявності";
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(databaseProducts, true))){
+            bw.write(nameprod + " " + costprod + " " + characterprod + " " + ratingprod + " " + countprod);
+            bw.newLine();
+            bw.write(nameproduct + " " + costproduct + " " + character + " " + rating + " " + countproduct);
+            bw.newLine();
+        }catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
     public String getNameProduct() {
         return nameProduct;
@@ -75,5 +94,13 @@ public class Product {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public String getDatabaseProducts() {
+        return databaseProducts;
+    }
+
+    public void setDatabaseProducts(String databaseProducts) {
+        this.databaseProducts = databaseProducts;
     }
 }

@@ -5,6 +5,7 @@ public class Delivery {
     private String region;
 
     public Delivery() {
+        delivery();
         String typeofdelivery = getTypeofdelivery();
         String typeofcountry = getTypeofdelivery();
         String region = getRegion();

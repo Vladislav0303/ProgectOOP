@@ -5,7 +5,7 @@ public class Sklad {
     protected int[] countOfProduct;
 
     public Sklad() {
-        sklad();
+
     }
     void sklad() {
         // Користувач вказує склад numOfSklad, а далі йому виводиться успішно офорлмене замовлення, це замовлення записується
