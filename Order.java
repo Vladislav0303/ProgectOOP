@@ -1,21 +1,21 @@
 import java.util.Arrays;
 
-public class Order {
+public class Order extends Basket{
     private int numOfOrder;
     private String databaseOfOrders = "databaseOfOrders.txt";
 
     public Order() {
 
     }
-    void order(String[] NameProducts, int[] countOfProduct, int[] cost) {
-        Site s = new Site();
+    public void order(String[] NameProducts, int[] countOfProduct, int cost) {
           int num = numOfOrder++;
           System.out.println(num);
         databaseOfOrders = "Номер замовлення: " + numOfOrder;
         System.out.println("Номер замовлення: " + numOfOrder);
-        System.out.println("Список замовлення: " + Arrays.toString(NameProducts));
-        System.out.println("Товари: " + Arrays.toString(cost));
+        System.out.println("Список замовлення: " + Arrays.toString(NameProducts));;
+        System.out.println("Ціна за всі товари: " + cost);
         Pay pay = new Pay();
+        pay.pay();
     }
 
     public String getDatabaseOfOrders() {

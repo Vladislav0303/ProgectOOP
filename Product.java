@@ -2,55 +2,97 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Product {
-    private String nameProduct;
-    private int countOfProduct;
-    private int cost;
+    protected String nameProduct = "1.Iphone X\n" + "2.Ipad 4\n" + "3.Samsung S24\n" + "4.Oppo A53";
+    protected int countOfProduct;
+    protected int cost;
     protected String characteristic;
-    protected int rating;
-    private String databaseProducts = "rtr.txt";
-    Scanner sc = new Scanner(System.in);
+    protected byte rating;
+    private String databaseProducts = "test.txt";
 
     public Product() {
 
     }
-    // якщо користувач захоче поставити оцінку
-        void product() {
-            try (BufferedReader br = new BufferedReader(new FileReader(databaseProducts))){
-                String ln;
-                while ((ln = br.readLine()) != null) {
-                    System.out.println(ln);
-                }
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
+    public void product() {
+        Client cl = new Client();
+        Scanner sc = new Scanner(System.in);
+        Scanner chose = new Scanner(System.in);
+        System.out.println("Виберіть товар: ");
+        byte prod = sc.nextByte();
+        if(prod == 1) {
+            System.out.println("Ви обрали: Iphone X");
+                countOfProduct = 15;
+                cost = 15000;
+                characteristic = "3000 mAh, 4/64 GB";
+                rating = 6;
+                System.out.println("В наявності: " + countOfProduct + "\nЦіна: " + cost + "\nХарактеристика: " + characteristic + "\nОцінка товару: " + rating + " ");
+            System.out.println("Хочете повернутися до назад до товарів: ");
+            if(chose.nextLine().equals("Так")) {
+                product();
+            } else {
+                cl.posibilities();
             }
-            System.out.println("Хочете додати свій коментар?: ");
-            String chose = sc.nextLine();
-            if(chose.equals("Так")) {
-                Response rsp = new Response();
+            } else if (prod == 2) {
+            countOfProduct = 10;
+            cost = 35000;
+            characteristic = "4000 mAh, 4/64 GB";
+            rating = 7;
+            System.out.println("В наявності: " + countOfProduct + "\nЦіна: " + cost + "\nХарактеристика: " + characteristic + "\nОцінка товару: " + rating + " ");
+            System.out.println("Хочете повернутися до назад до товарів: ");
+            if(chose.nextLine().equals("Так")) {
+                product();
+            } else {
+                cl.posibilities();
             }
+        } else if (prod == 3) {
+            countOfProduct = 7;
+            cost = 66000;
+            characteristic = "5500 mAh, 4/64 GB";
+            rating = 8;
+            System.out.println("В наявності: " + countOfProduct + "\nЦіна: " + cost + "\nХарактеристика: " + characteristic + "\nОцінка товару: " + rating + " ");
+            System.out.println("Хочете повернутися до назад до товарів: ");
+            if(chose.nextLine().equals("Так")) {
+                product();
+            } else {
+                cl.posibilities();
+            }
+        } else if (prod == 4) {
+            countOfProduct = 4;
+            cost = 5000;
+            characteristic = "4000 mAh, 4/64 GB";
+            rating = 1;
+            System.out.println("В наявності: " + countOfProduct + "\nЦіна: " + cost + "\nХарактеристика: " + characteristic + "\nОцінка товару: " + rating + " ");
+            System.out.println("Хочете повернутися до назад до товарів: ");
+            if(chose.nextLine().equals("Так")) {
+                product();
+            } else {
+                cl.posibilities();
+            }
+        } else {
+            System.out.println("Такого продукту немає!");
+        }
+    }
+    public void changeResponse() {
+        Response rsp = new Response();
+                rsp.product();
+    }
+    public void takeInBasket() {
+        Scanner sc = new Scanner(System.in);
             System.out.println("Ви вже вибрали що хочете купити?: ");
             String chose1 = sc.nextLine();
             if(chose1.equals("Так")) {
                 Basket bs = new Basket();
-//        bs.basket(nameProduct(ці змінні будуть мати значення), countOfProduct(ці також), cost);
+                bs.basket();
             }
-//      вивід продуктів на екран
         }
-    void aboutOfProduct(String nameproduct, int costproduct, String character, int rating, int countproduct) {
+    public void aboutOfProduct(String nameproduct, int costproduct, String character, byte rating, int countproduct) {
         setNameProduct(nameproduct);
         setCost(costproduct);
         setCharacteristic(character);
         setRating(rating);
         setCountOfProduct(countproduct);
-        String nameprod = "Назва товару";
-        String costprod = "Ціна за товар";
-        String characterprod = "Характеристика товару";
-        String ratingprod = "Рейтинг товару";
-        String countprod = "Кількість товару у наявності";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(databaseProducts, true))){
-            bw.write(nameprod + " " + costprod + " " + characterprod + " " + ratingprod + " " + countprod);
             bw.newLine();
-            bw.write(nameproduct + " " + costproduct + " " + character + " " + rating + " " + countproduct);
+            bw.write("Назва товару: " + nameproduct + "\nЦіна за товар: " + costproduct + "\nХарактеристика товару: " + character + "\nРейтинг товару: " + rating + "\nКількість товару у наявності: " + countproduct);
             bw.newLine();
         }catch (IOException e) {
             System.out.println(e.getMessage());
@@ -64,7 +106,7 @@ public class Product {
         this.nameProduct = nameProduct;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
@@ -92,7 +134,7 @@ public class Product {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(byte rating) {
         this.rating = rating;
     }
 

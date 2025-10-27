@@ -2,40 +2,25 @@ import java.util.Scanner;
 
 public class Client {
     public String nameClient;
-    private String password;
-    Scanner scanner = new Scanner(System.in);
-
+    protected String password;
     public Client() {
 
     }
-    void client() {
-        Site s = new Site();
-        Admin admin = new Admin();
-        System.out.println("Введіть ім'я: ");
-        nameClient = scanner.nextLine();
-        System.out.println("Введіть пароль: ");
-        password = scanner.nextLine();
-        s.setDatabase(nameClient + " " + password);
-        if(nameClient.equals(admin.NameAdmin)) {
-            if(password.equals(admin.getPasswordAdmin())) {
-                System.out.println("Ви увійшли як Адмін");
-                admin.admin();
-            } else {
-                System.out.println("Пароль не вірний");
-                client();
-            }
+   public void posibilities() {
+        Product pr = new Product();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Оберіть що хочете зробити: ");
+        System.out.println("1.Додати оцінку товару: ");
+        System.out.println("2.Перейти до корзини: ");
+        byte chose = sc.nextByte();
+        if(chose == 1) {
+            pr.changeResponse();
+        } else if (chose == 2) {
+            pr.takeInBasket();
         } else {
-            System.out.println("Ви увійшли у систему");
-            Product product = new Product();
-            product.product();
+            System.out.println("Не вірне значення!");
+            posibilities();
         }
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
+

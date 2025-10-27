@@ -1,20 +1,39 @@
+import java.util.Scanner;
 
-public class Pay {
+public class Pay extends Basket{
     public String Typeofpay;
-    private int cost;
+    private double cost;
     public String typeofbank;
+    private double persant = 1.20;
 
     public Pay() {
 
     }
-    void pay() {
-        // Користувач обирає тип оплати, обирає банк, сплачує ціну, далі обирає тип доставки
-        int cost = getCost();
-        System.out.println(cost);
-        // Delivery del = new Delivery();
+    public void pay() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Виберіть тип оплати:");
+        System.out.println("1.Оплата карткою.");
+        System.out.println("2.Оплата готівкою.");
+        byte chose = sc.nextByte();
+        if(chose == 1) {
+            Typeofpay = "Ви обрали оплата карткою";
+            System.out.println(Typeofpay);
+            System.out.println("Оберіть тип банку, яким будете розраховуватися: ");
+            typeofbank = sc.nextLine();
+            System.out.println(typeofbank);
+            cost = costofProduct * persant;
+            System.out.println("З урахуванням зборів та комісій: " + cost);
+            Delivery del = new Delivery();
+            del.delivery();
+        } else if (chose == 2) {
+            Typeofpay = "Ви обрали оплата готівкою";
+            System.out.println(Typeofpay);
+            Delivery del = new Delivery();
+            del.delivery();
+        }
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
